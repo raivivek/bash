@@ -1,6 +1,8 @@
 # SLURM aliases
+alias sq='squeue'
 alias squ='squeue -u vivekrai'
-alias scA='scancel -u vivekrai'
+alias scall='scancel -u vivekrai'
+alias sacct='sacct --format=JobID,JobName,Priority,User,CPUTime,MaxRSS'
 
 sjob() {
   scontrol show jobid -dd "$@" | lss;
@@ -15,5 +17,5 @@ serr() {
 }
 
 scjob() {
-  scancel "$@"
+  scancel "$@";
 }

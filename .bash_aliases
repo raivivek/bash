@@ -1,17 +1,13 @@
-# source git alises
-[ -f ~/.git_aliases.bash ] && source ~/.git_aliases.bash
-[ -f ~/.slurm_aliases.bash ] && source ~/.slurm_aliases.bash
-
 # cd with auto ls
 cd() { builtin cd "$@" && l; }
 
 # rsync copy with progress
-cp() {
-  rsync -WaP --human-readable --info=name0,progress2 $1 $2;
+rcp() {
+  rsync -avzh --human-readable --progress --stats $1 $2;
 }
 
 # path
-export CDPATH=.:~:/projects:~/scripts:~/sandbox:~/.local
+export CDPATH=.:~:/projects:~/scripts:/lab/work/vivekrai/analyses
 
 # aliases
 alias ..='cd ..'
@@ -30,12 +26,12 @@ alias zc='zcat'
 # dir stuff 
 alias d='cd'
 alias md='mkdir -pv'
-alias rmR='rm -r -f'
+alias rmr='rm -r -f'
 
 # list-dirs
-alias ll='l -lh --sort=size'
 alias ls='ls -CF --color'
 alias l='ls --ignore=.git'
+alias ll='l -lh --sort=size'
 alias lla='ll -A' # hidden
 
 # permissions
@@ -63,11 +59,14 @@ alias hs='history | grep $1'
 alias c='clear'
 alias g='git'
 
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# twoline prompt
 [ -f ~/.twoline_prompt.sh ] && source ~/.twoline_prompt.sh
 
 # autojump
+[[ -s /home/vivekrai/.autojump/etc/profile.d/autojump.sh ]] && source /home/vivekrai/.autojump/etc/profile.d/autojump.sh
  
 # Get color support for 'less'
 export LESS="--RAW-CONTROL-CHARS"
