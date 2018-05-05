@@ -12,6 +12,13 @@ set mark-symlinked-directories on
 "\e[B": history-search-forward
 "\e[A": history-search-backward
 
+# cycle through options, Tab and Shift-Tab
+TAB:menu-complete
+"\e[Z":menu-complete-backward
+
+# only start cycling on second TAB press
+set menu-complete-display-prefix on
+
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
