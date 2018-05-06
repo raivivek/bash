@@ -1,6 +1,13 @@
 # cd with auto ls
 cd() { builtin cd "$@" && ls; }
 
+
+# Cisco VPN connect for UofM
+alias vpn="/opt/cisco/anyconnect/bin/vpn"
+function vpnc() {
+  vpn connect "umvpn.umnet.umich.edu"
+}
+
 # `rsync` copy with progress
 rcp() {
   rsync -avzh --human-readable --progress --stats $1 $2;

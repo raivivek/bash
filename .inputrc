@@ -1,3 +1,6 @@
+#
+#set convert-meta on
+
 # Make Tab autocomplete regardless of filename case
 set completion-ignore-case on
 
@@ -15,6 +18,16 @@ set mark-symlinked-directories on
 # cycle through options, Tab and Shift-Tab
 TAB:menu-complete
 "\e[Z":menu-complete-backward
+
+#Control-p: history-search-backward
+#Control-n: history-search-forward
+#Control-a: beginning-of-line
+#Control-b: backward-word
+#Control-f: forward-word
+#Control-d: delete-char
+#Control-e: end-of-line
+#Control-k: kill-line
+#Control-l: clear-screen
 
 # only start cycling on second TAB press
 set menu-complete-display-prefix on
