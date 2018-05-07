@@ -7,6 +7,8 @@ alias mv='mv -iv'
 alias fix_stty='stty sane'
 alias path='echo -e ${PATH//:/\\n}'
 
+alias d..='cd..'
+clias cd..='cd..'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../..'
@@ -44,6 +46,7 @@ alias rmr='rm -r -f'
 alias ls='ls -Fhp ${colorflag}'
 alias l='ls'
 alias ll='l -l'
+alias la='ll -a'
 alias lla='ll -a'
 alias lsd="ll | grep --color=never '^d'"
 
@@ -63,6 +66,7 @@ alias bt='bcftools'
 alias vt='vcftools'
 
 # processes
+alias t='htop'
 alias ht='htop'
 alias top='htop'
 alias topu='htop -u $(whoami)'
@@ -84,13 +88,7 @@ shopt -s expand_aliases
 shopt -s direxpand
 shopt -s histappend
 shopt -s nocaseglob
-
-# Enable some Bash 4 features when possible:
-# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
-# * Recursive globbing, e.g. `echo **/*.txt`
-for option in autocd globstar; do
-    shopt -s "$option" 2> /dev/null;
-done;
+shopt -s globstar
 
 # Add tab completion for many Bash commands
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
