@@ -1,4 +1,5 @@
 # SLURM aliases
+alias sr='srun'
 alias sq='squeue'
 alias squ='squeue -u vivekrai'
 alias scall='scancel -u vivekrai'
