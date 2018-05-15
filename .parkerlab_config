@@ -1,0 +1,47 @@
+# vim:ft=sh
+
+#
+# LAB CONFIG
+#
+
+. /lab/sw/bin/pl
+
+#
+# CUSTOM PATHS
+#
+
+# added by Anaconda2 installer
+# export PATH="/home/vivekrai/.anaconda2/bin:$PATH"
+# export PATH="/home/vivekrai/.anaconda2/envs/py2/bin:$PATH"
+
+# local bin
+export PATH="/home/vivekrai/.local/bin:$PATH"
+
+# added by Anaconda3 installer
+export PATH="/home/vivekrai/.anaconda3/bin:$PATH"
+
+# export LD_PATH
+export LD_LIBRARY_PATH="/home/vivekrai/.local/lib":$LD_LIBRARY_PATH
+
+#
+# FUNCTIONS
+#
+
+host() {
+  if [[ -z $@ ]]; then
+    echo "ERROR: no arguments."
+    echo "usage: host <source> [target]"
+    echo "       <source>: required, source directory"
+    echo "       [target]: optional, target directory to send to (default: sends to /lab/web/data/)"
+    return
+  fi
+  chmod -R a+rX $1;
+  if ! [[ -z $2 ]]; then
+    target="$2/$1"
+  else
+    target=$1
+  fi
+  echo "Sending directory to virtual server..."
+  rsync -av $1 vs:/lab/web/data/$target
+  echo "Done. Visit https://theparkerlab.med.umich.edu/data/$target"
+}
