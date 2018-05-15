@@ -1,9 +1,12 @@
 # SLURM aliases
 alias sr='srun'
 alias sq='squeue'
+alias sqp='squeue -t PENDING'
+alias sqr='squeue -t RUNNING'
 alias squ='squeue -u vivekrai'
 alias scall='scancel -u vivekrai'
 alias sacct='sacct --format=JobID,JobName,Priority,User,CPUTime,MaxRSS'
+alias sacctu='sacct -u $(whoami)'
 
 sjob() {
   scontrol show jobid -dd "$@" | lss;
@@ -18,5 +21,21 @@ serr() {
 }
 
 scjob() {
-  scancel "$@";
+  echo "canceled $@"; scancel "$@";
+}
+
+sinfo() {
+  sstat --format=AveCPU,AvePages,AveRSS,AveVMSize,JobID -j "$@" --allsteps;
+}
+
+shold() {
+  echo "hold $@"; scontrol hold "$@";
+}
+
+sstart() {
+  echo "resuming $@"; scontrol resume "$@";
+}
+
+srq() {
+  echo "requeued $@"; scontrol requeue "$@";
 }

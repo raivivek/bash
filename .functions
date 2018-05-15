@@ -1,5 +1,13 @@
+# lss with autocorrect
+function lss() {
+  if [[ -d "$@" ]]; then
+    ls "$@"
+  else
+    less "$@"
+  fi
+}
 # cd with auto ls
-cd() { builtin cd "$@" && ls; }
+function cd() { builtin cd "$@" && ls; }
 
 # extract archives with one function
 extract () {
