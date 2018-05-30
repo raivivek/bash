@@ -3,7 +3,7 @@
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{path,bash_prompt,exports,functions}; do
+for file in ~/.{path,bash_prompt,exports,functions,parkerlab_config}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -19,3 +19,7 @@ unset file;
 
 # autojump
 [[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+
+# color support for pagers
+export LESS="--RAW-CONTROL-CHARS"
+[[ -f ~/.LESS_TERMCAP  ]] && . ~/.LESS_TERMCAP
