@@ -7,8 +7,10 @@ alias mv='mv -iv'
 alias fix_stty='stty sane'
 alias path='echo -e ${PATH//:/\\n}'
 
+alias d.='cd ..'
 alias d..='cd..'
-clias cd..='cd..'
+alias cdd='cd'
+alias cd..='cd..'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ....='cd ../../..'
@@ -20,7 +22,7 @@ alias j='jobs'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-    colorflag="--color"
+    colorflag="--color=auto"
 else # OS X `ls`
     colorflag="-G"
 fi
@@ -28,14 +30,13 @@ fi
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
 
-# Recursively delete `.DS_store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
 # pagers
 alias lss='less -FSRXc'
-alias zl='zless -FSRXc'
 alias zm='zmore'
+alias zl='zless -Sc'
 alias zc='zcat'
+alias zh='zhead'
+alias zt='ztail'
 
 # dir stuff 
 alias d='cd'
@@ -76,28 +77,9 @@ alias hs='history | grep $1'
 alias c='clear'
 alias g='git'
 
-## autocorrect typos
-shopt -s cdspell
-shopt -s dirspell
-
-## autocd
-shopt -s autocd
-shopt -s cmdhist
-shopt -s checkjobs
-shopt -s expand_aliases
-shopt -s direxpand
-shopt -s histappend
-shopt -s nocaseglob
-shopt -s globstar
-
 # Add tab completion for many Bash commands
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
     source "$(brew --prefix)/share/bash-completion/bash_completion";
 elif [ -f /etc/bash_completion ]; then
     source /etc/bash_completion;
-fi;
-
-# Enable tab completion for `g` by marking it as an alias for `git`
-if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    complete -o default -o nospace -F _git g;
 fi;
