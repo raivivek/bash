@@ -18,6 +18,9 @@ alias ~='cd ~'
 alias s='sudo'
 alias se='sudo env PATH="$PATH"'
 
+alias sa='source activate'
+alias sd='source deactivate'
+
 alias j='jobs'
 
 # Detect which `ls` flavor is in use
@@ -36,7 +39,6 @@ alias zm='zmore'
 alias zl='zless -Sc'
 alias zc='zcat'
 alias zh='zhead'
-alias zt='ztail'
 
 # dir stuff 
 alias d='cd'
@@ -60,6 +62,11 @@ alias e='vim'
 alias ge='gvim'
 alias vi='vim'
 
+# count stuff?
+alias wcc='wc -c'
+alias wcl='wc -l'
+
+#
 # do bioinformatics?
 alias tb='tabix'
 alias st='samtools'

@@ -3,8 +3,7 @@ alias sr='srun'
 alias sq='squeue'
 alias sqp='squeue -t PENDING'
 alias sqr='squeue -t RUNNING'
-alias squ='squeue -u vivekrai'
-alias scall='scancel -u vivekrai'
+alias squ='squeue -u $USER'
 alias sacct='sacct --format=JobID,JobName,Priority,User,CPUTime,MaxRSS'
 alias sacctu='sacct -u $(whoami)'
 
@@ -21,7 +20,7 @@ serr() {
 }
 
 scjob() {
-  echo "canceled $@"; scancel "$@";
+  echo "Canceled $@."; scancel "$@";
 }
 
 sinfo() {
@@ -29,13 +28,13 @@ sinfo() {
 }
 
 shold() {
-  echo "hold $@"; scontrol hold "$@";
+  echo "Job $@ on hold."; scontrol hold "$@";
 }
 
 sstart() {
-  echo "resuming $@"; scontrol resume "$@";
+  echo "Resuming $@"; scontrol resume "$@";
 }
 
 srq() {
-  echo "requeued $@"; scontrol requeue "$@";
+  echo "Requeued $@"; scontrol requeue "$@";
 }

@@ -31,3 +31,6 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOME/.local/lib/pkgconfig:$HOME/.anaco
 # color support for pagers
 export LESS="--RAW-CONTROL-CHARS"
 [[ -f ~/.LESS_TERMCAP  ]] && . ~/.LESS_TERMCAP
+
+export HISTTIMEFORMAT="%d/%m/%y %T"
+export PROMPT_COMMAND='history -a'
